@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        a
+        {
+            font-size:12px;
+           color:Blue;
+        }
+        ul li{ list-style:none; }
+    </style>
+    <script type="text/javascript">
+        function frameAutoHeight(f) {
+            try {
+                if (f.contentDocument && f.contentDocument.body.offsetHeight) {
+                    f.height = f.contentDocument.body.offsetHeight + 100;
+                    if (f.contentDocument.body.offsetWidth) f.width = f.contentDocument.body.offsetWidth;
+                } else if (f.Document && f.Document.body.scrollHeight) {
+                    f.height = f.Document.body.scrollHeight + 100;
+                    if (f.Document.body.scrollWidth) f.width = f.Document.body.scrollWidth
+                }
+            }
+            catch (e)
+            { }
+        }
+    </script>
+</head>
+<body>
+<div style="width: 120px; float: left;">
+        <ul>
+            <li><a href="win.html" target="jmtest">弹窗</a></li>
+            <li><a href="menu.html" target="jmtest">菜单</a></li>
+            <li><a href="paging.html" target="jmtest">分页</a></li>
+            <li><a href="table.html" target="jmtest">表格</a></li>
+            <li><a href="template.html" target="jmtest">js模板</a></li>
+        </ul>
+    </div>
+    <div style="float: left; width: 80%;">
+        <iframe id="jmtest" name="jmtest" src="win.html" width="100%" style="border: 1px solid #000;min-height:200px; " 
+         frameborder="0" onload="javascript:frameAutoHeight(this);"></iframe>
+    </div>
+</body>
+</html>

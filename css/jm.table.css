@@ -1,0 +1,33 @@
+﻿
+/**
+表格样式
+**/
+.jm-table
+{
+    border-collapse:collapse;
+    width:100%;
+}
+
+.jm-table th
+{
+   border:solid 1px #345060;
+    border-bottom-width:2px;
+    background-color:#D9E2E9;
+    padding:6px 0; 
+}
+    
+.jm-table tr
+{
+  background-color:#EAEAEA;
+}
+
+.jm-table tr.even
+{
+  background-color:#fff;
+}  
+    
+.jm-table tr td
+{
+  border:solid 1px #345060;        
+  padding:4px 4px 4px 8px;
+}  

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>分页组件</title>
+    <link href="../css/jm.paging.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/jm.core.js" type="text/javascript"></script>
+    <script src="../js/jm.paging.js" type="text/javascript"></script>
+    <style type="text/css">
+        .style1
+        {
+            text-align: justify;
+            font-size: 10.5000pt;
+            font-family: "Times New Roman";
+            margin: 0pt;
+        }
+    </style>
+</head>
+<body>
+<div id="data"></div>
+<div id="paging"></div>
+<script type="text/javascript">
+    $('#paging').paging({        
+        showCount: 6, //当前页附近显示多少页码，比如，4或5表示前后显二个页码，6表示前后显示三个,都会除以2
+        change: function (p) {
+            showPageData(p);
+        }
+    });
+
+    /**
+    * 显示当前页数据
+    **/
+    function showPageData(index) {
+        $('#data').html('第' + index + '页');
+
+        //当点击而码后触发的事件，传入点击的是第几页
+        $('#paging').paging({ index: index, count: 100 });
+    }
+
+    $(function () {
+        showPageData(1);//默认显示第一页
+    });
+</script>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+        &lt;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">id</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;data&quot;&gt;&lt;/</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+        &lt;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">id</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;paging&quot;&gt;&lt;/</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+        &lt;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">script</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">type</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;text/javascript&quot;&gt;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;&nbsp;&nbsp;&nbsp;$(</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;#paging&#39;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">).paging({&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showCount:&nbsp;6,&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//当前页附近显示多少页码，比如，4或5表示前后显二个页码，6表示前后显示三个,都会除以2</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;change:&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;(p)&nbsp;{<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showPageData(p);<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;});<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p>
+        </span>
+    </p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">/**<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;显示当前页数据<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;**/</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;showPageData(index)&nbsp;{<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;#data&#39;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">).html(</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;第&#39;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;+&nbsp;index&nbsp;+&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;页&#39;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">);<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p>
+        </span>
+    </p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//当点击而码后触发的事件，传入点击的是第几页</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;#paging&#39;</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">).paging({&nbsp;index:&nbsp;index,&nbsp;count:&nbsp;100&nbsp;});<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p>
+        </span>
+    </p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;&nbsp;&nbsp;&nbsp;$(</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;()&nbsp;{<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showPageData(1);</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//默认显示第一页</span><span 
+            style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;});<o:p></o:p></span></p>
+    <p class="style1">
+        <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+        &lt;/</span><span 
+            style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">script</span><span 
+            style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;<o:p></o:p></span></p>
+</body>
+</html>

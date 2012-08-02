@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/jm.core.js" type="text/javascript"></script>
+     <script type="text/javascript">
+         //全局变量，获得焦点的ID  
+         var onFocusID = "";
+         //取得绝对位置  
+         function absPos(node) {
+             var x = y = 0;
+             do {
+                 x += node.offsetLeft;
+                 y += node.offsetTop;
+             } while (nodenode = node.offsetParent);
+             return {
+                 'x': x,
+                 'y': y
+             };
+         }
+
+         //显示省份  
+         function showProvince(obj) {
+             //javascript的方法  
+             //jQuery("#divProvince").css("left",absPos(obj).x);  
+             //jQuery("#divProvince").css("top",absPos(obj).y + jQuery(obj).outerHeight());  
+
+             //jQuery的方法  
+             jQuery("#divProvince").css("left", $jm.getOffset(obj).left);
+             jQuery("#divProvince").css("top", $jm.getOffset(obj).top + jQuery(obj).outerHeight());
+
+             jQuery("#divProvince").show();
+
+             onFocusID = obj.id;
+         }
+         //隐藏省份  
+         function hideProvince() {
+             jQuery("#divProvince").hide();
+         }
+         //
+         $(function () {
+             $("#divProvince input:radio").each(function () {
+                 $(this).click(function () {
+                     //this.checked="checked";  
+                     //alert(jQuery(this).attr("value"));  
+                     if (onFocusID != "") {
+                         $("#" + onFocusID).val($(this).val());
+                     }
+                     hideProvince();
+                 });
+             });
+
+             $(document).bind('click', function (ev) {
+                 var target = ev.target || ev.srcElement;
+                 if (onFocusID != ev.target.id && false == jQuery("#divProvince").is('hidden'))
+                     hideProvince(); 
+             });
+         });  
+    </script>  
+</head>
+<body>
+<br />
+<br />
+<table>  
+        <tr>  
+            <td>省份</td>  
+            <td><input id="txtOne" type="text" onfocus="showProvince(this);" /></td>  
+        </tr>  
+        <tr>  
+            <td>省份</td>  
+            <td><input id="txtTwo" type="text" onfocus="showProvince(this);" /></td>  
+        </tr>  
+    </table>  
+    <div id="divProvince" style="display:none; position:absolute;width:260px;background-color:#BFEBEE; border:1px solid #BEC0BF;padding:5px;font-size:12px;">  
+        <input id="Radio1" type="radio" value="北京" />北京  
+        <input id="Radio2" type="radio" value="上海" />上海  
+        <input id="Radio3" type="radio" value="天津" />天津  
+        <input id="Radio4" type="radio" value="重庆" />重庆  
+        <input id="Radio5" type="radio" value="安徽" />安徽  
+        <input id="Radio6" type="radio" value="福建" />福建  
+        <input id="Radio7" type="radio" value="甘肃" />甘肃  
+        <input id="Radio8" type="radio" value="广东" />广东  
+        <input id="Radio9" type="radio" value="广西" />广西  
+        <input id="Radio10" type="radio" value="贵州" />贵州  
+        <input id="Radio11" type="radio" value="海南" />海南  
+        <input id="Radio12" type="radio" value="河北" />河北  
+        <input id="Radio13" type="radio" value="河南" />河南  
+        <input id="Radio14" type="radio" value="黑龙江" />黑龙江  
+        <input id="Radio15" type="radio" value="湖北" />湖北  
+        <input id="Radio16" type="radio" value="湖南" />湖南  
+        <input id="Radio17" type="radio" value="吉林" />吉林  
+        <input id="Radio18" type="radio" value="江苏" />江苏  
+        <input id="Radio19" type="radio" value="江西" />江西  
+        <input id="Radio20" type="radio" value="辽宁" />辽宁  
+        <input id="Radio21" type="radio" value="内蒙古" />内蒙古  
+        <input id="Radio22" type="radio" value="宁夏" />宁夏  
+        <input id="Radio23" type="radio" value="青海" />青海  
+        <input id="Radio24" type="radio" value="山东" />山东  
+        <input id="Radio25" type="radio" value="山西" />山西  
+        <input id="Radio26" type="radio" value="陕西" />陕西  
+        <input id="Radio27" type="radio" value="四川" />四川  
+        <input id="Radio28" type="radio" value="西藏" />西藏  
+        <input id="Radio29" type="radio" value="新.疆" />新.疆  
+        <input id="Radio30" type="radio" value="云南" />云南  
+        <input id="Radio31" type="radio" value="浙江" />浙江  
+        <input id="Radio32" type="radio" value="香港" />香港  
+        <input id="Radio33" type="radio" value="澳门" />澳门  
+        <input id="Radio34" type="radio" value="台湾" />台湾  
+        <span style="cursor:pointer;color:red;" onclick="hideProvince();">取消</span>  
+    </div> 
+    <div style="border:1px solid #000; background-color:#ccc; width:200px; height:200px;"></div>
+    <b style="float:left; 
+        border-style:solid; 
+        border-width:30px; 
+        border-left-width:30px;
+        border-right-width:0px;
+        border-bottom-width:0;
+        border-color:#000 transparent transparent transparent;         
+        height:0; 
+        width:0; 
+        font-size:0">
+    </b>
+
+</body>
+</html>

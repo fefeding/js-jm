@@ -1,0 +1,619 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../css/jm.win.css" rel="stylesheet" type="text/css" />
+    <link href="../css/jm.menu.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/jm.core.js" type="text/javascript"></script>
+    <script src="../js/jm.menu.js" type="text/javascript"></script>
+    <script src="../js/jm.win.js" type="text/javascript"></script>
+   
+    <style type="text/css">
+    .myButton
+    {
+        color:Green;
+        padding:6px;
+        }
+   .myButton:hover
+    {
+        color:red;
+        }
+        .style1
+        {
+            text-align: justify;
+            font-size: 10.5000pt;
+            font-family: "Times New Roman";
+            margin: 0pt;
+        }
+    </style>
+    <script type="text/javascript">
+        /**
+        * 弹出模式测试窗口
+        **/
+        function popModal() {
+            var win=new $jm.win({
+                title: '家猫编程',//标题
+                //按钮参数，支持自定义className，text,click参数其中className, click参数可选
+                button: [
+                {   text: '确定',
+                    className: 'myButton', 
+                    click: function ()
+                     { alert('确定'); }
+                 },
+                { text: '关闭', click: function () {
+                    this.close();
+                }
+                }],
+                url: "http://www.jm47.com",//加载的路径
+                iframe: true,//是否用ifram加载页面
+                left: 20,//离左边距离
+                top: 10,//离顶部距离
+                modal: true, //是否为模式窗口
+                canMax: true, //是否禁止最大化
+                width: 600,
+                height: 400
+            });
+            win.show();
+        }
+
+        /**
+        * 用jquery插件方式弹出div中的信息
+        **/
+        function popJqueryWindow() {
+            $('#testwin').window({
+                width: 600,
+                height: 400,
+                resizeable:false,//固定大小,禁用改变大小后，也不能最大化
+                canMin:false//不许最小化
+            }).show();
+        }
+
+        /**
+        * 在DIV中弹出窗口
+        **/
+        function popWindowInDiv(x,y,p,t,bounds) {
+            var win = new $jm.win({
+                title: t?t:'家猫编程', //标题
+                //按钮参数，支持自定义className，text,click参数其中className, click参数可选
+                button: [                
+                { text: '关闭', click: function () {
+                    this.close();
+                }
+                }],
+                content:'<span color="red">DIV子窗口</span>',//窗口内容
+                left: x?x:20, //离左边距离
+                top: y?y:10, //离顶部距离               
+                canMax: false, //禁止最大化
+                parent:'wincontainer',//设置窗口的容器，不设定为当前window
+                width: 200,
+                height: 100,
+                position:p?p:'',//位置，center=居中,top=顶部,left=左边
+                bounds: bounds?bounds:null//边界锁定,//默认全锁定，此参数为一个json对象：如{left:false,top:true,right:true,bottom:false}//表示锁定顶部与右边，左边与底部可越界
+            });
+            win.show();
+        }
+        $(function () {
+            popWindowInDiv(80, 90);
+            popWindowInDiv(260, 180, '', '锁定上左边界', { left: true, top: true, right: false, bottom: false });
+            popWindowInDiv(1, 2, 'center', '居中窗口');
+        });
+    </script>
+</head>
+<body>
+<a href="javascript:popModal();">弹出模式窗口</a>
+<a href="javascript:popJqueryWindow();">弹出jquery插件窗口</a>
+<br />
+<!--测试容器为DIV的多窗口-->
+<a href="javascript:popWindowInDiv();">在DIV中弹出窗口</a>
+<div id="wincontainer" style="border:1px solid black;width:800px; height:400px; background-color:#000;position:relative;"></div>
+
+<!--内容弹窗-->
+<div id="testwin" style="display:none;">
+<input type="text" placeholder="test" id="txttest" />
+<input type="button" value="测试" onclick="javascript:alert($('#txttest').val());" />
+</div>
+
+  
+    <p>
+        代码示例：</p>
+    <p>
+        &nbsp;</p>
+    <div style="layout-grid: 15.6000pt; page: Section0;">
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">script</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">type</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;text/javascript&quot;&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">/**<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;弹出模式测试窗口<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;popModal()&nbsp;{<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">var</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;win=</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">new</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;$jm.win({<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;家猫编程&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//标题</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//按钮参数，支持自定义className，text,click参数其中className,&nbsp;click参数可选</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button:&nbsp;[<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;text:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;确定&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;myButton&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;()<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;alert(</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;确定&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">);&nbsp;}<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;关闭&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;click:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;()&nbsp;{<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">this</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">.close();<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}],<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&quot;http://www.jm47.com&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//加载的路径</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">true</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//是否用ifram加载页面</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left:&nbsp;20,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//离左边距离</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;10,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//离顶部距离</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modal:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">true</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//是否为模式窗口</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canMax:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">true</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//是否禁止最大化</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;600,<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;400<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;win.show();<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p>
+            </span>
+        </p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">/**<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;用jquery插件方式弹出div中的信息<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;popJqueryWindow()&nbsp;{<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;#testwin&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">).window({<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;600,<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;400,<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resizeable:</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">false</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//固定大小,禁用改变大小后，也不能最大化</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canMin:</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">false</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//不许最小化</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}).show();<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p>
+            </span>
+        </p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">/**<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;在DIV中弹出窗口<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;popWindowInDiv(x,y,p,t,bounds)&nbsp;{<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">var</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;win&nbsp;=&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">new</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;$jm.win({<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title:&nbsp;t?t:</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;家猫编程&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//标题</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//按钮参数，支持自定义className，text,click参数其中className,&nbsp;click参数可选</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button:&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;text:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;关闭&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;click:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;()&nbsp;{<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">this</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">.close();<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}],<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content:</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;&lt;span&nbsp;color=&quot;red&quot;&gt;DIV子窗口&lt;/span&gt;&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//窗口内容</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left:&nbsp;x?x:20,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//离左边距离</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;y?y:10,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//离顶部距离&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canMax:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">false</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//禁止最大化</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent:</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;wincontainer&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//设置窗口的容器，不设定为当前window</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;200,<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;100,<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position:p?p:</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//位置，center=居中,top=顶部,left=左边</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bounds:&nbsp;bounds?bounds:</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">null</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">//边界锁定,//默认全锁定，此参数为一个json对象：如{left:false,top:true,right:true,bottom:false}//表示锁定顶部与右边，左边与底部可越界</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;win.show();<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">function</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;()&nbsp;{<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popWindowInDiv(80,&nbsp;90);<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popWindowInDiv(260,&nbsp;180,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;锁定上左边界&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;{&nbsp;left:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">true</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;top:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">true</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;right:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">false</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;bottom:&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">false</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;});<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popWindowInDiv(1,&nbsp;2,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;center&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">,&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">&#39;居中窗口&#39;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">);<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;&nbsp;&nbsp;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&lt;/</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">script</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;/</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">head</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">body</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">a</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">href</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;javascript:popModal();&quot;&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">弹出模式窗口</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&lt;/</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">a</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">a</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">href</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;javascript:popJqueryWindow();&quot;&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">弹出jquery插件窗口</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&lt;/</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">a</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">br</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">/&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;!--测试容器为DIV的多窗口--&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">a</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">href</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;javascript:popWindowInDiv();&quot;&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">在DIV中弹出窗口</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&lt;/</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">a</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">id</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;wincontainer&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">style</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">border</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">:1px&nbsp;solid&nbsp;black;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">width</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">:800px;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">height</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">:400px;&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">background-color</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">:#000;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">position</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">:relative;&quot;&gt;&lt;/</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p>
+            </span>
+        </p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,100,0); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;!--内容弹窗--&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">id</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;testwin&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">style</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">display</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">:none;&quot;&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">input</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">type</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;text&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">placeholder</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;test&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">id</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;txttest&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">/&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">input</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">type</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;button&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">value</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;测试&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(255,0,0); font-size:9.5000pt; font-family:'新宋体'; ">onclick</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">=&quot;javascript:alert($(&#39;#txttest&#39;).val());&quot;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; ">&nbsp;</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">/&gt;</span><span 
+                style="mso-spacerun:'yes'; font-size:9.5000pt; font-family:'新宋体'; "><o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">
+            &lt;/</span><span 
+                style="mso-spacerun:'yes'; color:rgb(128,0,0); font-size:9.5000pt; font-family:'新宋体'; ">div</span><span 
+                style="mso-spacerun:'yes'; color:rgb(0,0,255); font-size:9.5000pt; font-family:'新宋体'; ">&gt;<o:p></o:p></span></p>
+        <p class="style1">
+            <span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'Times New Roman'; "><o:p></o:p>
+            </span>
+        </p>
+    </div>
+
+  
+</body>
+</html>
